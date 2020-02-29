@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
+    return redirect()->route('url-shortener.index');
     return view('welcome');
 });
+Route::resource('url-shortener', 'UrlShortenerController')->middleware('web')->only(['index', 'store', 'destroy']);
+Route::get('{firstPiece}/{secondPiece}', 'RedirectController@redirect');
