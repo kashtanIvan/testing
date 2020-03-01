@@ -13,7 +13,7 @@
                 <div class="col-sm-3">
                     @if($errors->any())
                         <small id="urlHelp" class="text-danger">
-                            {{ $errors }}
+                            {{ $errors->first() }}
                         </small>
                     @endif
                 </div>
@@ -42,8 +42,8 @@
                     class="badge-success"
                 @endif>
                     <th scope="row">{{ $url->id }}</th>
-                    <td><a href="{{ url($url->code) }}">{{ url($url->code) }}</a></td>
-                    <td><a href="{{ $url->code }}">{{ $url->url }}</a></td>
+                    <td><a target="_blank" href="{{ url($url->code) }}">{{ url($url->code) }}</a></td>
+                    <td><a target="_blank" href="{{ $url->code }}">{{ $url->url }}</a></td>
                     <td>{{$url->click_count}}</td>
                     <td><form method="POST" action="{{route('url-shortener.destroy', $url->id)}}">
                             @method('DELETE')
